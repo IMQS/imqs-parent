@@ -1,4 +1,4 @@
 imqs-parent
 ===========
 
-The parent pom for Maven build
+The parent pom for Maven builds
