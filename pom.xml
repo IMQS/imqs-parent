@@ -11,193 +11,18 @@
 
     <name>IMQS Parent Pom</name>
 
+    <description>Holds company wide configuration for Java Artifacts.</description>
+
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <url>http://dev002:8081/nexus/content/repositories/releases</url>
+            <url>http://dogmatix:8081/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <url>http://dev002:8081/nexus/content/repositories/snapshots</url>
+            <url>http://dogmatix:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- Spring -->
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>3.2.0.RELEASE</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-expression</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>3.2.0.RELEASE</version>
-            </dependency>
-
-            <!-- Spring integration -->
-            <dependency>
-                <groupId>org.springframework.integration</groupId>
-                <artifactId>spring-integration-core</artifactId>
-                <version>2.1.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.integration</groupId>
-                <artifactId>spring-integration-file</artifactId>
-                <version>2.1.0.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.integration</groupId>
-                <artifactId>spring-integration-http</artifactId>
-                <version>2.1.0.RELEASE</version>
-            </dependency>
-
-
-            <!-- Logging -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.6.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
-                <version>1.6.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jul-to-slf4j</artifactId>
-                <version>1.6.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>1.6.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-
-            <!-- Servlet -->
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>jstl</artifactId>
-                <version>1.2</version>
-            </dependency>
-
-            <!-- JUnit -->
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.11</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>3.2.0.RELEASE</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <resources>
@@ -272,7 +97,6 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-changes-plugin</artifactId>
                     <version>2.8</version>
                 </plugin>
@@ -280,6 +104,11 @@
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.3</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>appassembler-maven-plugin</artifactId>
+                    <version>1.4</version>
                 </plugin>
 
             </plugins>
@@ -359,16 +188,74 @@
                         <manifestEntries>
                             <artifactId>${project.artifactId}</artifactId>
                             <version>${project.version}</version>
-                            <svn-revision>${project.svn.revision}</svn-revision>
+                            <svn-revision>${project.scm.tag}</svn-revision>
                         </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
 
         </plugins>
-
     </build>
 
+    <profiles>
+        <!-- Never Activate This profile on the Parent, Child project needs to provide more -->
+        <!-- configuration for it to work -->
+        <!-- See http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/generate-daemons-mojo.html -->
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>appassembler-maven-plugin</artifactId>
+                        <version>1.4</version>
+                        <configuration>
+                            <target>${project.build.directory}/etc</target>
+                            <daemons>
+                                <daemon>
+                                    <id>${project.artifactId}</id>
+
+                                    <!-- If you override the jvmSettings, remember to override all of them -->
+                                    <jvmSettings>
+                                        <initialMemorySize>256M</initialMemorySize>
+                                        <maxMemorySize>512M</maxMemorySize>
+                                        <maxStackSize>128M</maxStackSize>
+                                        <systemProperties>
+                                            <systemProperty>log_name=${project.artifactId}</systemProperty>
+                                            <systemProperty>logback.configurationFile=C:/imqsbin/conf/logback.groovy</systemProperty>
+                                        </systemProperties>
+                                    </jvmSettings>
+                                    <generatorConfigurations>
+                                        <generatorConfiguration>
+                                            <generator>jsw</generator>
+                                            <includes>
+                                                <include>linux-x86-32</include>
+                                                <include>linux-x86-64</include>
+                                                <include>windows-x86-32</include>
+                                                <include>windows-x86-64</include>
+                                            </includes>
+                                        </generatorConfiguration>
+                                    </generatorConfigurations>
+                                    <platforms>
+                                        <platform>jsw</platform>
+                                    </platforms>
+                                </daemon>
+                            </daemons>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-jsw-scripts</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>generate-daemons</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
 </project>
