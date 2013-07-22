@@ -218,7 +218,6 @@
                     <useEditMode>true</useEditMode>
                     <releaseVersion>${artifact.rel}</releaseVersion>
                     <developmentVersion>${artifact.dev}</developmentVersion>
-                    <tag>${project.artifactId}-${project.version}</tag>
                     <scmCommentPrefix>Maven Release Plugin: releasing.. </scmCommentPrefix>
                 </configuration>
             </plugin>
