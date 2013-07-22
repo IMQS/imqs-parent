@@ -217,7 +217,6 @@
                 <configuration>
                     <useEditMode>true</useEditMode>
                     <releaseVersion>${artifact.rel}</releaseVersion>
-                    <!--<developmentVersion>${artifact.dev}</developmentVersion>-->
                     <scmCommentPrefix>Maven Release Plugin: releasing.. </scmCommentPrefix>
                 </configuration>
             </plugin>
@@ -288,7 +287,7 @@
                         <configuration>
                             <repositoryId>local</repositoryId>
                             <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${build.finalName}.tar.gz</file>
+                            <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
                             <version>${project.version}</version>
                             <artifactId>${project.artifactId}</artifactId>
                             <groupId>${project.groupId}</groupId>
@@ -313,7 +312,7 @@
                         <configuration>
                             <repositoryId>local</repositoryId>
                             <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${build.finalName}.zip</file>
+                            <file>${project.build.directory}\${project.build.finalName}.zip</file>
                             <version>${project.version}</version>
                             <artifactId>${project.artifactId}</artifactId>
                             <groupId>${project.groupId}</groupId>
