@@ -24,6 +24,12 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <scm>
+        <connection>scm:git:git@github.com:IMQS/imqs-parent.git</connection>
+        <url>scm:git:git@github.com:IMQS/imqs-parent.git</url>
+        <developerConnection>scm:git:git@github.com:IMQS/imqs-parent.git</developerConnection>
+    </scm>
+
     <build>
         <resources>
             <resource>
@@ -111,6 +117,17 @@
                     <version>1.4</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.4.1</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
@@ -194,6 +211,12 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.1</version>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -202,7 +225,7 @@
         <!-- configuration for it to work -->
         <!-- See http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/generate-daemons-mojo.html -->
         <profile>
-            <id>release</id>
+            <id>daemon</id>
             <build>
                 <plugins>
                     <plugin>
@@ -252,6 +275,57 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.7</version>
+                        <configuration>
+                            <repositoryId>local</repositoryId>
+                            <url>file://${user.home}\.m2</url>
+                            <file>${project.build.directory}\${build.finalName}.tar.gz</file>
+                            <version>${project.version}</version>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <groupId>${project.groupId}</groupId>
+                            <packaging>tag.gz</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-jsw-scripts</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.7</version>
+                        <configuration>
+                            <repositoryId>local</repositoryId>
+                            <url>file://${user.home}\.m2</url>
+                            <file>${project.build.directory}\${build.finalName}.zip</file>
+                            <version>${project.version}</version>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <groupId>${project.groupId}</groupId>
+                            <packaging>zip</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-jsw-scripts</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
