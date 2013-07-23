@@ -305,31 +305,6 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <version>2.7</version>
-                        <configuration>
-                            <repositoryId>local</repositoryId>
-                            <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${project.build.finalName}.zip</file>
-                            <version>${project.version}</version>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <groupId>${project.groupId}</groupId>
-                            <packaging>zip</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>generate-jsw-scripts</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy-file</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
                 </plugins>
             </build>
         </profile>
