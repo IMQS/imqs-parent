@@ -231,6 +231,12 @@
         <!-- See http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/generate-daemons-mojo.html -->
         <profile>
             <id>daemon</id>
+            <activation>
+                <property>
+                    <name>rundaemon</name>
+                    <value>false</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
