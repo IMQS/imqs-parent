@@ -243,44 +243,7 @@
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>appassembler-maven-plugin</artifactId>
                         <version>1.4</version>
-                        <configuration>
-                            <target>${project.build.directory}/etc</target>
-                            <daemons>
-                                <daemon>
-                                    <id>${project.artifactId}</id>
-                                    <mainClass>za.co.imqs.photos.PhotoApplication</mainClass>
-                                    <commandLineArguments>
-                                        <commandLineArgument>file:/imqsbin/conf/asset-photo-service.json
-                                        </commandLineArgument>
-                                    </commandLineArguments>
 
-                                    <!-- If you override the jvmSettings, remember to override all of them -->
-                                    <jvmSettings>
-                                        <initialMemorySize>256M</initialMemorySize>
-                                        <maxMemorySize>512M</maxMemorySize>
-                                        <maxStackSize>128M</maxStackSize>
-                                        <systemProperties>
-                                            <systemProperty>log_name=${project.artifactId}</systemProperty>
-                                            <systemProperty>logback.configurationFile=C:/imqsbin/conf/logback.groovy</systemProperty>
-                                        </systemProperties>
-                                    </jvmSettings>
-                                    <generatorConfigurations>
-                                        <generatorConfiguration>
-                                            <generator>jsw</generator>
-                                            <includes>
-                                                <include>linux-x86-32</include>
-                                                <include>linux-x86-64</include>
-                                                <include>windows-x86-32</include>
-                                                <include>windows-x86-64</include>
-                                            </includes>
-                                        </generatorConfiguration>
-                                    </generatorConfigurations>
-                                    <platforms>
-                                        <platform>jsw</platform>
-                                    </platforms>
-                                </daemon>
-                            </daemons>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>generate-jsw-scripts</id>
@@ -288,6 +251,44 @@
                                 <goals>
                                     <goal>generate-daemons</goal>
                                 </goals>
+                                <configuration>
+                                    <target>${project.build.directory}/etc</target>
+                                    <daemons>
+                                        <daemon>
+                                            <id>${project.artifactId}</id>
+                                            <mainClass>za.co.imqs.photos.PhotoApplication</mainClass>
+                                            <commandLineArguments>
+                                                <commandLineArgument>file:/imqsbin/conf/asset-photo-service.json
+                                                </commandLineArgument>
+                                            </commandLineArguments>
+
+                                            <!-- If you override the jvmSettings, remember to override all of them -->
+                                            <jvmSettings>
+                                                <initialMemorySize>256M</initialMemorySize>
+                                                <maxMemorySize>512M</maxMemorySize>
+                                                <maxStackSize>128M</maxStackSize>
+                                                <systemProperties>
+                                                    <systemProperty>log_name=${project.artifactId}</systemProperty>
+                                                    <systemProperty>logback.configurationFile=C:/imqsbin/conf/logback.groovy</systemProperty>
+                                                </systemProperties>
+                                            </jvmSettings>
+                                            <generatorConfigurations>
+                                                <generatorConfiguration>
+                                                    <generator>jsw</generator>
+                                                    <includes>
+                                                        <include>linux-x86-32</include>
+                                                        <include>linux-x86-64</include>
+                                                        <include>windows-x86-32</include>
+                                                        <include>windows-x86-64</include>
+                                                    </includes>
+                                                </generatorConfiguration>
+                                            </generatorConfigurations>
+                                            <platforms>
+                                                <platform>jsw</platform>
+                                            </platforms>
+                                        </daemon>
+                                    </daemons>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
