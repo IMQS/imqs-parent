@@ -262,12 +262,6 @@
                                                 <commandLineArgument>file:/imqsbin/conf/asset-photo-service.json
                                                 </commandLineArgument>
                                             </commandLineArguments>
-
-                                            <formats>
-                                                <format>tar.gz</format>
-                                                <format>zip</format>
-                                            </formats>
-
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
                                                 <initialMemorySize>256M</initialMemorySize>
@@ -292,6 +286,10 @@
                                             <platforms>
                                                 <platform>jsw</platform>
                                             </platforms>
+                                            <formats>
+                                                <format>tar.gz</format>
+                                                <format>zip</format>
+                                            </formats>
                                         </daemon>
                                     </daemons>
                                 </configuration>
