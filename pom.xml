@@ -259,7 +259,7 @@
                                             <id>${project.artifactId}</id>
                                             <mainClass>za.co.imqs.photos.PhotoApplication</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>file:/asset-photo-service.json
+                                                <commandLineArgument>file:asset-photo-service.json
                                                 </commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
