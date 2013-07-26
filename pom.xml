@@ -244,6 +244,7 @@
                         <artifactId>appassembler-maven-plugin</artifactId>
                         <version>1.4</version>
 
+
                         <executions>
                             <execution>
                                 <id>generate-jsw-scripts</id>
@@ -253,7 +254,6 @@
                                 </goals>
                                 <configuration>
                                     <target>${project.build.directory}/etc</target>
-
                                     <daemons>
                                         <daemon>
                                             <id>${project.artifactId}</id>
@@ -262,6 +262,11 @@
                                                 <commandLineArgument>file:/imqsbin/conf/asset-photo-service.json
                                                 </commandLineArgument>
                                             </commandLineArguments>
+
+                                            <formats>
+                                                <format>tar.gz</format>
+                                                <format>zip</format>
+                                            </formats>
 
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
@@ -282,10 +287,6 @@
                                                         <include>windows-x86-32</include>
                                                         <include>windows-x86-64</include>
                                                     </includes>
-                                                    <formats>
-                                                        <format>zip</format>
-                                                        <format>tar.gz</format>
-                                                    </formats>
                                                 </generatorConfiguration>
                                             </generatorConfigurations>
                                             <platforms>
