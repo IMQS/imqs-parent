@@ -286,10 +286,10 @@
                                             <platforms>
                                                 <platform>jsw</platform>
                                             </platforms>
-                                            <formats>
-                                                <format>tar.gz</format>
-                                                <format>zip</format>
-                                            </formats>
+                                           <property>
+                                               <id>jsw-application-assembly</id>
+                                               <activateByDefault>true</activateByDefault>
+                                           </property>
                                         </daemon>
                                     </daemons>
                                 </configuration>
