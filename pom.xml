@@ -253,6 +253,7 @@
                                 </goals>
                                 <configuration>
                                     <target>${project.build.directory}/etc</target>
+
                                     <daemons>
                                         <daemon>
                                             <id>${project.artifactId}</id>
@@ -281,6 +282,10 @@
                                                         <include>windows-x86-32</include>
                                                         <include>windows-x86-64</include>
                                                     </includes>
+                                                    <formats>
+                                                        <format>zip</format>
+                                                        <format>tar.gz</format>
+                                                    </formats>
                                                 </generatorConfiguration>
                                             </generatorConfigurations>
                                             <platforms>
