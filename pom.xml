@@ -296,6 +296,9 @@
                     <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.4</version>
+                        <configuration>
+                            <finalName>${project.build.finalName}.tar.gz</finalName>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>make-assembly</id> <!-- this is used for inheritance merges -->
@@ -306,7 +309,6 @@
                                 <configuration>
                                     <descriptors>
                                         <descriptor>src/main/assembly/src.xml</descriptor>
-                                        <finalName>${project.build.finalName}.tar.gz</finalName>
                                     </descriptors>
                                 </configuration>
                             </execution>
