@@ -4,7 +4,7 @@
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.19-SNAPSHOT</version>
+    <version>1.0.20-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -260,7 +260,7 @@
                                             <id>${project.artifactId}</id>
                                             <mainClass>${projectMainClass}</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>asset-photo-service.json</commandLineArgument>
+                                                <commandLineArgument>file:/asset-photo-service.json</commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
