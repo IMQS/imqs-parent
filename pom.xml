@@ -258,10 +258,9 @@
                                     <daemons>
                                         <daemon>
                                             <id>${project.artifactId}</id>
-                                            <mainClass>za.co.imqs.photos.PhotoApplication</mainClass>
+                                            <mainClass>${projectMainClass}}</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>file:asset-photo-service.json
-                                                </commandLineArgument>
+                                                <commandLineArgument>asset-photo-service.json</commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
