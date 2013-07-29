@@ -260,7 +260,7 @@
                                             <id>${project.artifactId}</id>
                                             <mainClass>${projectMainClass}</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>file:\asset-photo-service.json</commandLineArgument>
+                                                <commandLineArgument>file:asset-photo-service.json</commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
@@ -319,7 +319,7 @@
                         <configuration>
                             <repositoryId>local</repositoryId>
                             <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
+                            <file>${project.build.directory}\${project.build.finalName}-${project.artifactId}.tar.gz</file>
                             <version>${project.version}</version>
                             <artifactId>${project.artifactId}</artifactId>
                             <groupId>${project.groupId}</groupId>
