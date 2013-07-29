@@ -296,9 +296,6 @@
                     <plugin>
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.4</version>
-                        <configuration>
-                            <finalName>${project.build.finalName}.tar.gz</finalName>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>make-assembly</id> <!-- this is used for inheritance merges -->
@@ -322,7 +319,7 @@
                         <configuration>
                             <repositoryId>local</repositoryId>
                             <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
+                            <file>${project.build.directory}\${project.build.finalName}-jsw-application-assembly.tar.gz</file>
                             <version>${project.version}</version>
                             <artifactId>${project.artifactId}</artifactId>
                             <groupId>${project.groupId}</groupId>
