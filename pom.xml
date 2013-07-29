@@ -4,7 +4,7 @@
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.20</version>
+    <version>1.0.21-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -26,7 +26,7 @@
         <connection>scm:git:git@github.com:IMQS/imqs-parent.git</connection>
         <url>scm:git:git@github.com:IMQS/imqs-parent.git</url>
         <developerConnection>scm:git:git@github.com:IMQS/imqs-parent.git</developerConnection>
-      <tag>imqs-parent-1.0.20</tag>
+      <tag>imqs-parent-1.0.4</tag>
     </scm>
 
     <build>
