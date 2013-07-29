@@ -258,7 +258,7 @@
                                     <daemons>
                                         <daemon>
                                             <id>${project.artifactId}</id>
-                                            <mainClass>${projectMainClass}}</mainClass>
+                                            <mainClass>za.co.imqs.photos.PhotoApplication</mainClass>
                                             <commandLineArguments>
                                                 <commandLineArgument>asset-photo-service.json</commandLineArgument>
                                             </commandLineArguments>
