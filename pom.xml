@@ -260,7 +260,7 @@
                                             <id>${project.artifactId}</id>
                                             <mainClass>${projectMainClass}</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>file:asset-photo-service.json</commandLineArgument>
+                                                <commandLineArgument>${jsonConfigFile}</commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
