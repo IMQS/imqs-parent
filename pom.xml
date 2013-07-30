@@ -258,9 +258,9 @@
                                     <daemons>
                                         <daemon>
                                             <id>${project.artifactId}</id>
-                                            <mainClass>${projectMainClass}</mainClass>
+                                            <mainClass>${daemonMainClass}</mainClass>
                                             <commandLineArguments>
-                                                <commandLineArgument>${jsonConfigFile}</commandLineArgument>
+                                                <commandLineArgument>${commandLineArguments}</commandLineArgument>
                                             </commandLineArguments>
                                             <!-- If you override the jvmSettings, remember to override all of them -->
                                             <jvmSettings>
