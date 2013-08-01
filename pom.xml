@@ -33,8 +33,9 @@
 
         <!-- Java Service Wrapper Properties -->
         <jsw.main.class>your.applications.main.class</jsw.main.class>
-        <jsw.configuration.files></jsw.configuration.files>
-        <jsw.configuration.http></jsw.configuration.http>
+
+        <!-- Space seperated list of configuration files or HTTP services -->
+        <jsw.configuration></jsw.configuration>
         <jsw.log.config>C:/imqsbin/conf/logback.groovy</jsw.log.config>
 
         <!-- Default Assembly Descriptor -->
@@ -273,7 +274,7 @@
                                         <id>${project.artifactId}</id>
                                         <mainClass>${jsw.main.class}</mainClass>
                                         <commandLineArguments>
-                                            <commandLineArgument>${jsw.configuration.files} ${jsw.configuration.http}</commandLineArgument>
+                                            <commandLineArgument>${jsw.configuration}</commandLineArgument>
                                         </commandLineArguments>
                                         <!-- If you override the jvmSettings, remember to override all of them -->
                                         <jvmSettings>
@@ -321,6 +322,7 @@
                                     <descriptor>${assemble.descriptor}</descriptor>
                                 </descriptors>
                                 <appendAssemblyId>false</appendAssemblyId>
+                                <escapeString></escapeString>
                             </configuration>
                             <executions>
                                 <execution>
@@ -343,8 +345,8 @@
                                     <id>deploy-zip</id>
                                     <phase>deploy</phase>
                                     <configuration>
-                                        <repositoryId>local</repositoryId>
-                                        <url>file://${user.home}\.m2</url>
+                                        <repositoryId>snapshots</repositoryId>
+                                        <url>http://dogmatix:8081/nexus/content/repositories/snapshots</url>
                                         <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
                                         <version>${project.version}</version>
                                         <artifactId>${project.artifactId}-app</artifactId>
@@ -360,8 +362,8 @@
                                     <id>deploy-tar</id>
                                     <phase>deploy</phase>
                                     <configuration>
-                                        <repositoryId>local</repositoryId>
-                                        <url>file://${user.home}\.m2</url>
+                                        <repositoryId>snapshots</repositoryId>
+                                        <url>http://dogmatix:8081/nexus/content/repositories/snapshots</url>
                                         <file>${project.build.directory}\${project.build.finalName}.zip</file>
                                         <version>${project.version}</version>
                                         <artifactId>${project.artifactId}-app</artifactId>
