@@ -347,7 +347,7 @@
                                         <url>file://${user.home}\.m2</url>
                                         <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
                                         <version>${project.version}</version>
-                                        <artifactId>${project.artifactId}</artifactId>
+                                        <artifactId>${project.artifactId}-app</artifactId>
                                         <groupId>${project.groupId}</groupId>
                                         <packaging>tag.gz</packaging>
                                         <generatePom>true</generatePom>
@@ -364,7 +364,7 @@
                                         <url>file://${user.home}\.m2</url>
                                         <file>${project.build.directory}\${project.build.finalName}.zip</file>
                                         <version>${project.version}</version>
-                                        <artifactId>${project.artifactId}</artifactId>
+                                        <artifactId>${project.artifactId}-app</artifactId>
                                         <groupId>${project.groupId}</groupId>
                                         <packaging>zip</packaging>
                                         <generatePom>true</generatePom>
