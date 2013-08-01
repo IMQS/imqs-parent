@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -26,10 +27,30 @@
         <connection>scm:git:git@github.com:IMQS/imqs-parent.git</connection>
         <url>scm:git:git@github.com:IMQS/imqs-parent.git</url>
         <developerConnection>scm:git:git@github.com:IMQS/imqs-parent.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+    </scm>
+
+    <properties>
+
+        <!-- Java Service Wrapper Properties -->
+        <jsw.main.class>your.applications.main.class</jsw.main.class>
+        <jsw.configuration.files></jsw.configuration.files>
+        <jsw.configuration.http></jsw.configuration.http>
+        <jsw.log.config>C:/imqsbin/conf/logback.groovy</jsw.log.config>
+
+        <!-- Default Assembly Descriptor -->
+        <assemble.descriptor>src/main/assembly/src.xml</assemble.descriptor>
+
+        <!-- Default Test Properties -->
+        <maven.test.skip>false</maven.test.skip>
+
+        <!--Default Maven Release Properties -->
+        <artifact.rel></artifact.rel>
+    </properties>
 
     <build>
+
+        <finalName>${project.artifactId}</finalName>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -83,7 +104,8 @@
 
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version> <!-- 2.5 screws with filtering of Java Classes -->
+                    <version>2.6</version>
+                    <!-- 2.5 screws with filtering of Java Classes -->
                 </plugin>
 
                 <plugin>
@@ -112,12 +134,12 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
                     <artifactId>appassembler-maven-plugin</artifactId>
                     <version>1.4</version>
                 </plugin>
 
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.4.1</version>
                 </plugin>
@@ -125,6 +147,11 @@
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.7</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>2.2</version>
                 </plugin>
 
             </plugins>
@@ -211,126 +238,145 @@
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.4.1</version>
                 <configuration>
                     <useEditMode>true</useEditMode>
                     <releaseVersion>${artifact.rel}</releaseVersion>
-                    <scmCommentPrefix>Maven Release Plugin: releasing.. </scmCommentPrefix>
+                    <scmCommentPrefix>Maven Release Plugin: releasing..</scmCommentPrefix>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-help-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
 
         </plugins>
     </build>
 
     <profiles>
-        <!-- Never Activate This profile on the Parent, Child project needs to provide more -->
-        <!-- configuration for it to work -->
-        <!-- See http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/generate-daemons-mojo.html -->
+
         <profile>
-            <id>daemon</id>
+            <id>deploy-application</id>
             <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>appassembler-maven-plugin</artifactId>
-                        <version>1.4</version>
-                        <configuration>
-                            <target>${project.build.directory}/etc</target>
-                            <daemons>
-                                <daemon>
-                                    <id>${project.artifactId}</id>
 
-                                    <!-- If you override the jvmSettings, remember to override all of them -->
-                                    <jvmSettings>
-                                        <initialMemorySize>256M</initialMemorySize>
-                                        <maxMemorySize>512M</maxMemorySize>
-                                        <maxStackSize>128M</maxStackSize>
-                                        <systemProperties>
-                                            <systemProperty>log_name=${project.artifactId}</systemProperty>
-                                            <systemProperty>logback.configurationFile=C:/imqsbin/conf/logback.groovy</systemProperty>
-                                        </systemProperties>
-                                    </jvmSettings>
-                                    <generatorConfigurations>
-                                        <generatorConfiguration>
-                                            <generator>jsw</generator>
-                                            <includes>
-                                                <include>linux-x86-32</include>
-                                                <include>linux-x86-64</include>
-                                                <include>windows-x86-32</include>
-                                                <include>windows-x86-64</include>
-                                            </includes>
-                                        </generatorConfiguration>
-                                    </generatorConfigurations>
-                                    <platforms>
-                                        <platform>jsw</platform>
-                                    </platforms>
-                                </daemon>
-                            </daemons>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>generate-jsw-scripts</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>generate-daemons</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <plugins>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <version>2.7</version>
-                        <configuration>
-                            <repositoryId>local</repositoryId>
-                            <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
-                            <version>${project.version}</version>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <groupId>${project.groupId}</groupId>
-                            <packaging>tag.gz</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>generate-jsw-scripts</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy-file</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>appassembler-maven-plugin</artifactId>
+                            <configuration>
+                                <target>${project.build.directory}/etc</target>
+                                <daemons>
+                                    <daemon>
+                                        <id>${project.artifactId}</id>
+                                        <mainClass>${jsw.main.class}</mainClass>
+                                        <commandLineArguments>
+                                            <commandLineArgument>${jsw.configuration.files} ${jsw.configuration.http}</commandLineArgument>
+                                        </commandLineArguments>
+                                        <!-- If you override the jvmSettings, remember to override all of them -->
+                                        <jvmSettings>
+                                            <initialMemorySize>256M</initialMemorySize>
+                                            <maxMemorySize>512M</maxMemorySize>
+                                            <maxStackSize>128M</maxStackSize>
+                                            <systemProperties>
+                                                <systemProperty>log_name=${project.artifactId}</systemProperty>
+                                                <systemProperty>logback.configurationFile=${jsw.log.config}
+                                                </systemProperty>
+                                            </systemProperties>
+                                        </jvmSettings>
+                                        <generatorConfigurations>
+                                            <generatorConfiguration>
+                                                <generator>jsw</generator>
+                                                <includes>
+                                                    <include>linux-x86-32</include>
+                                                    <include>linux-x86-64</include>
+                                                    <include>windows-x86-32</include>
+                                                    <include>windows-x86-64</include>
+                                                </includes>
+                                            </generatorConfiguration>
+                                        </generatorConfigurations>
+                                        <platforms>
+                                            <platform>jsw</platform>
+                                        </platforms>
+                                    </daemon>
+                                </daemons>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>default-create-jsw</id>
+                                    <goals>
+                                        <goal>generate-daemons</goal>
+                                    </goals>
+                                    <phase>post-integration-test</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <version>2.7</version>
-                        <configuration>
-                            <repositoryId>local</repositoryId>
-                            <url>file://${user.home}\.m2</url>
-                            <file>${project.build.directory}\${project.build.finalName}.zip</file>
-                            <version>${project.version}</version>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <groupId>${project.groupId}</groupId>
-                            <packaging>zip</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>generate-jsw-scripts</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy-file</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                        <plugin>
+                            <artifactId>maven-assembly-plugin</artifactId>
+                            <configuration>
+                                <descriptors>
+                                    <descriptor>${assemble.descriptor}</descriptor>
+                                </descriptors>
+                                <appendAssemblyId>false</appendAssemblyId>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>default-jsw-assemble</id>
+                                    <goals>
+                                        <goal>single</goal>
+                                    </goals>
+                                    <phase>verify</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
 
-                </plugins>
+                        <plugin>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>deploy-zip</id>
+                                    <phase>deploy</phase>
+                                    <configuration>
+                                        <repositoryId>local</repositoryId>
+                                        <url>file://${user.home}\.m2</url>
+                                        <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
+                                        <version>${project.version}</version>
+                                        <artifactId>${project.artifactId}</artifactId>
+                                        <groupId>${project.groupId}</groupId>
+                                        <packaging>tag.gz</packaging>
+                                        <generatePom>true</generatePom>
+                                    </configuration>
+                                    <goals>
+                                        <goal>deploy-file</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>deploy-tar</id>
+                                    <phase>deploy</phase>
+                                    <configuration>
+                                        <repositoryId>local</repositoryId>
+                                        <url>file://${user.home}\.m2</url>
+                                        <file>${project.build.directory}\${project.build.finalName}.zip</file>
+                                        <version>${project.version}</version>
+                                        <artifactId>${project.artifactId}</artifactId>
+                                        <groupId>${project.groupId}</groupId>
+                                        <packaging>zip</packaging>
+                                        <generatePom>true</generatePom>
+                                    </configuration>
+                                    <goals>
+                                        <goal>deploy-file</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+
             </build>
         </profile>
     </profiles>
