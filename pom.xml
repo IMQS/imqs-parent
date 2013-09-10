@@ -193,6 +193,7 @@
                         <phase>test</phase>
                         <configuration>
                             <skip>${maven.test.skip}</skip>
+                            <useSystemClassLoader>false</useSystemClassLoader>
                             <includes>
                                 <include>**/*Test.java</include>
                             </includes>
@@ -211,6 +212,7 @@
                         <phase>integration-test</phase>
                         <configuration>
                             <skip>${maven.test.skip}</skip>
+                            <useSystemClassLoader>false</useSystemClassLoader>
                             <includes>
                                 <include>**/*IntegrationTest.java</include>
                             </includes>
@@ -278,6 +280,7 @@
                                         </commandLineArguments>
                                         <!-- If you override the jvmSettings, remember to override all of them -->
                                         <jvmSettings>
+
                                             <initialMemorySize>256M</initialMemorySize>
                                             <maxMemorySize>512M</maxMemorySize>
                                             <maxStackSize>128M</maxStackSize>
@@ -288,6 +291,7 @@
                                             </systemProperties>
                                         </jvmSettings>
                                         <generatorConfigurations>
+
                                             <generatorConfiguration>
                                                 <generator>jsw</generator>
                                                 <includes>
@@ -297,6 +301,12 @@
                                                     <include>windows-x86-64</include>
                                                 </includes>
                                             </generatorConfiguration>
+                                            <configuration>
+                                                <property>
+                                                    <name>wrapper.java.command</name>
+                                                    <value>JAVA_HOME/bin/java</value>
+                                                </property>
+                                            </configuration>
                                         </generatorConfigurations>
                                         <platforms>
                                             <platform>jsw</platform>
