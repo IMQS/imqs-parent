@@ -303,7 +303,7 @@
                                                 <configuration>
                                                     <property>
                                                       <name>wrapper.java.command</name>
-                                                      <value>JAVA_HOME/bin/java</value>
+                                                      <value>$JAVA_HOME/bin/java</value>
                                                    </property>
                                                 </configuration>
                                             </generatorConfiguration>
