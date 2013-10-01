@@ -300,13 +300,27 @@
                                                     <include>windows-x86-32</include>
                                                     <include>windows-x86-64</include>
                                                 </includes>
+                                                <configuration>
+                                                    <property>
+                                                      <name>wrapper.java.command</name>
+                                                      <value>%JAVA_HOME%/bin/java</value>
+                                                    </property>
+                                                    <property>
+                                                      <!-- This allows us to place JNI DLLs inside the root directory of the service.
+                                                      See 'real-time-service' for an example.
+                                                      Why is that the best? Because DLLs often come as one JNI DLL that is dependent upon
+                                                      a bunch of other DLLs. The initial JNI DLL is loaded via this path here (ie DOT,
+                                                      aka the current directory). The standard wrapper.conf sets the root to the current directory.
+                                                      Then, when Windows searches for DLLs, it will search in the current directory, so
+                                                      we have the secondary dependencies covered too. This DOES mean that if the current
+                                                      directory is changed by the service, then we are screwed. The simple solution is to ensure
+                                                      that you load all dependencies at startup, which is a good practice anyway. -->
+                                                      <name>wrapper.java.library.path.2</name>
+                                                      <value>.</value>
+                                                    </property>
+                                                </configuration>
                                             </generatorConfiguration>
-                                            <configuration>
-                                                <property>
-                                                    <name>wrapper.java.command</name>
-                                                    <value>JAVA_HOME/bin/java</value>
-                                                </property>
-                                            </configuration>
+
                                         </generatorConfigurations>
                                         <platforms>
                                             <platform>jsw</platform>
