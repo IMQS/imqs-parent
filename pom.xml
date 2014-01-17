@@ -374,7 +374,7 @@
                                         <version>${project.version}</version>
                                         <artifactId>${project.artifactId}-app</artifactId>
                                         <groupId>${project.groupId}</groupId>
-                                        <packaging>tag.gz</packaging>
+                                        <packaging>tar.gz</packaging>
                                         <generatePom>true</generatePom>
                                     </configuration>
                                     <goals>
