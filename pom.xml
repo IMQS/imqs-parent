@@ -35,8 +35,10 @@
 
         <!-- Space seperated list of configuration files or HTTP services -->
         <jsw.configuration />
-        <jsw.log.config>C:/imqsbin/conf/logback.groovy</jsw.log.config>
+        <jsw.log.config>"C:/imqsbin/conf/logback.groovy"</jsw.log.config>
 
+        <!-- log file name for service - without the .log extension -->
+        <jsw.logfilename>"C:/imqsvar/logs/${project.artifactId}"</jsw.logfilename>
         <!-- Default Assembly Descriptor -->
         <assemble.descriptor>src/main/assembly/src.xml</assemble.descriptor>
 
@@ -297,9 +299,8 @@
                                             <maxMemorySize>512M</maxMemorySize>
                                             <maxStackSize>128M</maxStackSize>
                                             <systemProperties>
-                                                <systemProperty>log_name=${project.artifactId}</systemProperty>
-                                                <systemProperty>logback.configurationFile=${jsw.log.config}
-                                                </systemProperty>
+                                                <systemProperty>log_name=${jsw.logfilename}</systemProperty>
+                                                <systemProperty>logback.configurationFile=${jsw.log.config}</systemProperty>
                                             </systemProperties>
                                         </jvmSettings>
                                         <generatorConfigurations>
@@ -329,6 +330,10 @@
                                                       that you load all dependencies at startup, which is a good practice anyway. -->
                                                       <name>wrapper.java.library.path.2</name>
                                                       <value>.</value>
+                                                    </property>
+                                                    <property>
+                                                        <name>wrapper.logfile</name>
+                                                        <value>c:/imqsvar/logs/${project.artifactId}-wrapper.log</value>
                                                     </property>
                                                 </configuration>
                                             </generatorConfiguration>
