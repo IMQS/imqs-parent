@@ -47,6 +47,7 @@
 
         <!--Default Maven Release Properties -->
         <artifact.rel />
+
     </properties>
 
     <build>
@@ -327,6 +328,15 @@
                                                         <name>wrapper.logfile</name>
                                                         <value>c:/imqsvar/logs/${project.artifactId}-wrapper.log</value>
                                                     </property>
+                                                    <property>
+                                                        <name>wrapper.logfile.maxfiles</name>
+                                                        <value>20</value>
+                                                    </property>
+                                                    <property>
+                                                        <name>wrapper.logfile.maxsize</name>
+                                                        <value>60m</value>
+                                                    </property>
+
                                                 </configuration>
                                             </generatorConfiguration>
 
