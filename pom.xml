@@ -292,6 +292,7 @@
                                             <systemProperties>
                                                 <systemProperty>log_name=${jsw.logfilename}</systemProperty>
                                                 <systemProperty>logback.configurationFile=${jsw.log.config}</systemProperty>
+												<systemProperty>file.encoding=UTF-8</systemProperty>
                                             </systemProperties>
                                         </jvmSettings>
                                         <generatorConfigurations>
