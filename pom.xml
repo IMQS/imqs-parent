@@ -276,7 +276,6 @@
                             <artifactId>appassembler-maven-plugin</artifactId>
                             <configuration>
                                 <target>${project.build.directory}/etc</target>
-								<useDaemonIdAsWrapperConfName>true</useDaemonIdAsWrapperConfName>
                                 <daemons>
                                     <daemon>
                                         <id>${project.artifactId}</id>
