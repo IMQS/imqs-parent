@@ -4,7 +4,7 @@
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -81,76 +81,75 @@
 
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>2.5.5</version>
                 </plugin>
 
                 <plugin>
+                    <!-- Version 2.x (from github): GMaven 2.x no longer supports any integration for compilation of Groovy sources.
+                    There were too many problems with stub-generation and hooking up compliation to the proper Maven
+                    lifecycle phases to effectivly support. -->
+                    <!-- ALSO : Codehaus does not serve up repositories anymore. We should use something else here. -->
                     <groupId>org.codehaus.gmaven</groupId>
                     <artifactId>gmaven</artifactId>
-                    <version>1.4</version>
+                    <version>1.5</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
                     <version>2.4</version>
                 </plugin>
 
                 <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
+
+                <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>2.7</version>
                     <!-- 2.5 screws with filtering of Java Classes -->
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-scm-plugin</artifactId>
-                    <version>1.8.1</version>
+                    <version>1.9.4</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.13</version>
+                    <version>2.18.1</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>2.13</version>
+                    <version>2.18.1</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-changes-plugin</artifactId>
-                    <version>2.8</version>
+                    <version>2.12</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.3</version>
+                    <version>2.6</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>appassembler-maven-plugin</artifactId>
-                    <version>1.5</version>
+                    <version>1.10</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.4.1</version>
+                    <version>2.5.2</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.1</version>
+                    <version>2.8.2</version>
                 </plugin>
 
                 <plugin>
@@ -169,6 +168,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
@@ -259,7 +259,11 @@
                 <version>2.2</version>
             </plugin>
 
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
         </plugins>
     </build>
 
