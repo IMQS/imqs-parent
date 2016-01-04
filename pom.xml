@@ -427,6 +427,50 @@
 
             </build>
         </profile>
+
+        <profile>
+            <!--
+                Test with names ending in TestDeployment will be run during the deployment
+                life cycle stage.
+
+                Use this for heavy weight tests that require pre-configured environments.
+            -->
+            <id>deployment-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                        </configuration>
+
+                        <executions>
+                            <execution>
+                                <id>deployment-tests</id>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <phase>deploy</phase>
+                                <configuration>
+                                    <skip>false</skip>
+                                    <useSystemClassLoader>false</useSystemClassLoader>
+                                    <includes>
+                                        <include>**/*TestDeployment.java</include>
+                                    </includes>
+                                    <excludes>
+                                        <exclude>**/*IntegrationTest.java</exclude>
+                                        <exclude>**/*ManualTest.java</exclude>
+                                        <exclude>**/*$*.java</exclude>
+                                    </excludes>
+                                </configuration>
+                            </execution>
+                        </executions>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
     </profiles>
 
 
