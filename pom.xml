@@ -171,7 +171,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -268,13 +267,32 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>code-quality-analysis</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>2.3</version>
+                        <executions>
+                            <execution>
+                                <id>bind-sonarqube-to-verify</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sonar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 
         <profile>
             <id>deploy-application</id>
             <build>
-
                     <plugins>
-
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>appassembler-maven-plugin</artifactId>
