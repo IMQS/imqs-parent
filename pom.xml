@@ -410,7 +410,7 @@
                                     <phase>deploy</phase>
                                     <configuration>
                                         <repositoryId>snapshots</repositoryId>
-                                        <url>http://dogmatix:8081/nexus/content/repositories/snapshots</url>
+                                        <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
                                         <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
                                         <version>${project.version}</version>
                                         <artifactId>${project.artifactId}-app</artifactId>
@@ -427,7 +427,7 @@
                                     <phase>deploy</phase>
                                     <configuration>
                                         <repositoryId>snapshots</repositoryId>
-                                        <url>http://dogmatix:8081/nexus/content/repositories/snapshots</url>
+                                        <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
                                         <file>${project.build.directory}\${project.build.finalName}.zip</file>
                                         <version>${project.version}</version>
                                         <artifactId>${project.artifactId}-app</artifactId>
