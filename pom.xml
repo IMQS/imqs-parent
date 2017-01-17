@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -28,13 +29,196 @@
         <developerConnection>scm:git:git@github.com:IMQS/imqs-parent.git</developerConnection>
     </scm>
 
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- IMQS WebServer support classes -->
+            <dependency>
+                <groupId>za.co.imqs.webserver</groupId>
+                <artifactId>imqs-webserver</artifactId>
+                <version>2.0.0-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-jsp</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>aopalliance</artifactId>
+                        <groupId>aopalliance</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-all</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--        ASM libraries       -->
+            <!--    These replace the ones in Jetty, else Spring annotations is broken  -->
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>5.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm-commons</artifactId>
+                <version>5.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm-tree</artifactId>
+                <version>5.0.3</version>
+            </dependency>
+
+            <!--    Jetty required libraries -->
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-util-ajax</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-http</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlet</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlets</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-util</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+
+            <!--Jetty JSP and JSTL SUPPORT -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jsp</artifactId>
+                <version>${jetty}</version>
+            </dependency>
+            <!-- End of Jetty requirements  -->
+
+
+            <!-- Spring required libraries -->
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${springframework.data}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${springframework.core}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${springframework.beans}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${springframework.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${springframework.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${springframework.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${springframework.core}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${springframework.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
+                <version>${springframework.jms}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${springframework.rabbit}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-amqp</artifactId>
+                <version>${springframework.rabbit}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.sun.jmx</groupId>
+                        <artifactId>jmxri</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
 
         <!-- Java Service Wrapper Properties -->
         <jsw.main.class>your.applications.main.class</jsw.main.class>
 
         <!-- Space seperated list of configuration files or HTTP services -->
-        <jsw.configuration />
+        <jsw.configuration/>
         <jsw.log.config>"C:/imqsbin/conf/logback.groovy"</jsw.log.config>
 
         <!-- log file name for service - without the .log extension -->
@@ -46,7 +230,23 @@
         <maven.test.skip>false</maven.test.skip>
 
         <!--Default Maven Release Properties -->
-        <artifact.rel />
+        <artifact.rel/>
+
+
+        <slf4j>1.7.5</slf4j>
+        <logback>1.0.13</logback>
+        <jetty>9.2.2.v20140723</jetty>
+        <jaxb.api>2.1</jaxb.api>
+
+        <springframework.core>4.1.4.RELEASE</springframework.core>
+        <springframework.beans>4.1.4.RELEASE</springframework.beans>
+        <springframework.security>4.0.0.RELEASE</springframework.security>
+        <springframework.integration>4.1.2.RELEASE</springframework.integration>
+        <springframework.ws.core>2.2.0.RELEASE</springframework.ws.core>
+        <springframework.data>1.8.0.RELEASE</springframework.data>
+        <springframework.jms>4.1.4.RELEASE</springframework.jms>
+        <springframework.rabbit>1.4.5.RELEASE</springframework.rabbit>
+        <rabbitmq.version>2.2.0</rabbitmq.version>
 
     </properties>
 
@@ -292,156 +492,156 @@
         <profile>
             <id>deploy-application</id>
             <build>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>appassembler-maven-plugin</artifactId>
-                            <configuration>
-                                <target>${project.build.directory}/etc</target>
-                                <daemons>
-                                    <daemon>
-                                        <id>${project.artifactId}</id>
-                                        <mainClass>${jsw.main.class}</mainClass>
-                                        <commandLineArguments>
-                                            <commandLineArgument>${jsw.configuration}</commandLineArgument>
-                                        </commandLineArguments>
-                                        <!-- If you override the jvmSettings, remember to override all of them -->
-                                        <jvmSettings>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>appassembler-maven-plugin</artifactId>
+                        <configuration>
+                            <target>${project.build.directory}/etc</target>
+                            <daemons>
+                                <daemon>
+                                    <id>${project.artifactId}</id>
+                                    <mainClass>${jsw.main.class}</mainClass>
+                                    <commandLineArguments>
+                                        <commandLineArgument>${jsw.configuration}</commandLineArgument>
+                                    </commandLineArguments>
+                                    <!-- If you override the jvmSettings, remember to override all of them -->
+                                    <jvmSettings>
 
-                                            <initialMemorySize>256M</initialMemorySize>
-                                            <maxMemorySize>512M</maxMemorySize>
-                                            <maxStackSize>128M</maxStackSize>
-                                            <systemProperties>
-                                                <systemProperty>log_name=${jsw.logfilename}</systemProperty>
-                                                <systemProperty>logback.configurationFile=${jsw.log.config}</systemProperty>
-												<systemProperty>file.encoding=UTF-8</systemProperty>
-                                            </systemProperties>
-                                        </jvmSettings>
-                                        <generatorConfigurations>
+                                        <initialMemorySize>256M</initialMemorySize>
+                                        <maxMemorySize>512M</maxMemorySize>
+                                        <maxStackSize>128M</maxStackSize>
+                                        <systemProperties>
+                                            <systemProperty>log_name=${jsw.logfilename}</systemProperty>
+                                            <systemProperty>logback.configurationFile=${jsw.log.config}</systemProperty>
+                                            <systemProperty>file.encoding=UTF-8</systemProperty>
+                                        </systemProperties>
+                                    </jvmSettings>
+                                    <generatorConfigurations>
 
-                                            <generatorConfiguration>
-                                                <generator>jsw</generator>
-                                                <includes>
-                                                    <include>linux-x86-32</include>
-                                                    <include>linux-x86-64</include>
-                                                    <include>windows-x86-32</include>
-                                                    <include>windows-x86-64</include>
-                                                </includes>
-                                                <configuration>
-                                                    <property>
-                                                      <name>wrapper.java.command</name>
-                                                      <value>%JAVA_HOME%/bin/java</value>
-                                                    </property>
-                                                    <property>
-                                                      <!-- This allows us to place JNI DLLs inside the root directory of the service.
-                                                      See 'real-time-service' for an example.
-                                                      Why is that the best? Because DLLs often come as one JNI DLL that is dependent upon
-                                                      a bunch of other DLLs. The initial JNI DLL is loaded via this path here (ie DOT,
-                                                      aka the current directory). The standard wrapper.conf sets the root to the current directory.
-                                                      Then, when Windows searches for DLLs, it will search in the current directory, so
-                                                      we have the secondary dependencies covered too. This DOES mean that if the current
-                                                      directory is changed by the service, then we are screwed. The simple solution is to ensure
-                                                      that you load all dependencies at startup, which is a good practice anyway. -->
-                                                      <name>wrapper.java.library.path.2</name>
-                                                      <value>.</value>
-                                                    </property>
-                                                    <property>
-                                                        <name>wrapper.logfile</name>
-                                                        <value>c:/imqsvar/logs/${project.artifactId}-wrapper.log</value>
-                                                    </property>
-                                                    <property>
-                                                        <name>wrapper.logfile.maxfiles</name>
-                                                        <value>20</value>
-                                                    </property>
-                                                    <property>
-                                                        <name>wrapper.logfile.maxsize</name>
-                                                        <value>60m</value>
-                                                    </property>
+                                        <generatorConfiguration>
+                                            <generator>jsw</generator>
+                                            <includes>
+                                                <include>linux-x86-32</include>
+                                                <include>linux-x86-64</include>
+                                                <include>windows-x86-32</include>
+                                                <include>windows-x86-64</include>
+                                            </includes>
+                                            <configuration>
+                                                <property>
+                                                    <name>wrapper.java.command</name>
+                                                    <value>%JAVA_HOME%/bin/java</value>
+                                                </property>
+                                                <property>
+                                                    <!-- This allows us to place JNI DLLs inside the root directory of the service.
+                                                    See 'real-time-service' for an example.
+                                                    Why is that the best? Because DLLs often come as one JNI DLL that is dependent upon
+                                                    a bunch of other DLLs. The initial JNI DLL is loaded via this path here (ie DOT,
+                                                    aka the current directory). The standard wrapper.conf sets the root to the current directory.
+                                                    Then, when Windows searches for DLLs, it will search in the current directory, so
+                                                    we have the secondary dependencies covered too. This DOES mean that if the current
+                                                    directory is changed by the service, then we are screwed. The simple solution is to ensure
+                                                    that you load all dependencies at startup, which is a good practice anyway. -->
+                                                    <name>wrapper.java.library.path.2</name>
+                                                    <value>.</value>
+                                                </property>
+                                                <property>
+                                                    <name>wrapper.logfile</name>
+                                                    <value>c:/imqsvar/logs/${project.artifactId}-wrapper.log</value>
+                                                </property>
+                                                <property>
+                                                    <name>wrapper.logfile.maxfiles</name>
+                                                    <value>20</value>
+                                                </property>
+                                                <property>
+                                                    <name>wrapper.logfile.maxsize</name>
+                                                    <value>60m</value>
+                                                </property>
 
-                                                </configuration>
-                                            </generatorConfiguration>
+                                            </configuration>
+                                        </generatorConfiguration>
 
-                                        </generatorConfigurations>
-                                        <platforms>
-                                            <platform>jsw</platform>
-                                        </platforms>
-                                    </daemon>
-                                </daemons>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>default-create-jsw</id>
-                                    <goals>
-                                        <goal>generate-daemons</goal>
-                                    </goals>
-                                    <phase>post-integration-test</phase>
-                                </execution>
-                            </executions>
-                        </plugin>
+                                    </generatorConfigurations>
+                                    <platforms>
+                                        <platform>jsw</platform>
+                                    </platforms>
+                                </daemon>
+                            </daemons>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>default-create-jsw</id>
+                                <goals>
+                                    <goal>generate-daemons</goal>
+                                </goals>
+                                <phase>post-integration-test</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
 
-                        <plugin>
-                            <artifactId>maven-assembly-plugin</artifactId>
-                            <configuration>
-                                <descriptors>
-                                    <descriptor>${assemble.descriptor}</descriptor>
-                                </descriptors>
-                                <appendAssemblyId>false</appendAssemblyId>
-                                <escapeString />
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>default-jsw-assemble</id>
-                                    <goals>
-                                        <goal>single</goal>
-                                    </goals>
-                                    <phase>verify</phase>
-                                </execution>
-                            </executions>
-                        </plugin>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${assemble.descriptor}</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <escapeString/>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>default-jsw-assemble</id>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <phase>verify</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
 
-                        <plugin>
-                            <artifactId>maven-deploy-plugin</artifactId>
-                            <configuration>
-                                <skip>true</skip>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>deploy-zip</id>
-                                    <phase>deploy</phase>
-                                    <configuration>
-                                        <repositoryId>snapshots</repositoryId>
-                                        <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
-                                        <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
-                                        <version>${project.version}</version>
-                                        <artifactId>${project.artifactId}-app</artifactId>
-                                        <groupId>${project.groupId}</groupId>
-                                        <packaging>tar.gz</packaging>
-                                        <generatePom>true</generatePom>
-                                    </configuration>
-                                    <goals>
-                                        <goal>deploy-file</goal>
-                                    </goals>
-                                </execution>
-                                <execution>
-                                    <id>deploy-tar</id>
-                                    <phase>deploy</phase>
-                                    <configuration>
-                                        <repositoryId>snapshots</repositoryId>
-                                        <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
-                                        <file>${project.build.directory}\${project.build.finalName}.zip</file>
-                                        <version>${project.version}</version>
-                                        <artifactId>${project.artifactId}-app</artifactId>
-                                        <groupId>${project.groupId}</groupId>
-                                        <packaging>zip</packaging>
-                                        <generatePom>true</generatePom>
-                                    </configuration>
-                                    <goals>
-                                        <goal>deploy-file</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
+                    <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>deploy-zip</id>
+                                <phase>deploy</phase>
+                                <configuration>
+                                    <repositoryId>snapshots</repositoryId>
+                                    <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
+                                    <file>${project.build.directory}\${project.build.finalName}.tar.gz</file>
+                                    <version>${project.version}</version>
+                                    <artifactId>${project.artifactId}-app</artifactId>
+                                    <groupId>${project.groupId}</groupId>
+                                    <packaging>tar.gz</packaging>
+                                    <generatePom>true</generatePom>
+                                </configuration>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>deploy-tar</id>
+                                <phase>deploy</phase>
+                                <configuration>
+                                    <repositoryId>snapshots</repositoryId>
+                                    <url>http://nexus.imqs.co.za:8081/nexus/content/repositories/snapshots</url>
+                                    <file>${project.build.directory}\${project.build.finalName}.zip</file>
+                                    <version>${project.version}</version>
+                                    <artifactId>${project.artifactId}-app</artifactId>
+                                    <groupId>${project.groupId}</groupId>
+                                    <packaging>zip</packaging>
+                                    <generatePom>true</generatePom>
+                                </configuration>
+                                <goals>
+                                    <goal>deploy-file</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
 
             </build>
         </profile>
