@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -27,7 +26,8 @@
         <connection>scm:git:git@github.com:IMQS/imqs-parent.git</connection>
         <url>scm:git:git@github.com:IMQS/imqs-parent.git</url>
         <developerConnection>scm:git:git@github.com:IMQS/imqs-parent.git</developerConnection>
-    </scm>
+      <tag>imqs-parent-1.0.4</tag>
+  </scm>
 
     <dependencyManagement>
         <dependencies>
@@ -218,7 +218,7 @@
         <jsw.main.class>your.applications.main.class</jsw.main.class>
 
         <!-- Space seperated list of configuration files or HTTP services -->
-        <jsw.configuration/>
+        <jsw.configuration />
         <jsw.log.config>"C:/imqsbin/conf/logback.groovy"</jsw.log.config>
 
         <!-- log file name for service - without the .log extension -->
@@ -230,7 +230,7 @@
         <maven.test.skip>false</maven.test.skip>
 
         <!--Default Maven Release Properties -->
-        <artifact.rel/>
+        <artifact.rel />
 
 
         <slf4j>1.7.5</slf4j>
@@ -586,7 +586,7 @@
                                 <descriptor>${assemble.descriptor}</descriptor>
                             </descriptors>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <escapeString/>
+                            <escapeString />
                         </configuration>
                         <executions>
                             <execution>
