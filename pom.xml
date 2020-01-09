@@ -75,6 +75,8 @@
         <springframework.beans>${springframework.core}</springframework.beans>
         <springframework.security>${springframework.core}</springframework.security>
         <springframework.rabbit>2.1.6.RELEASE</springframework.rabbit>
+        <springframework.jms>4.3.12.RELEASE</springframework.jms>
+        <springframework.data>2.2.2.RELEASE</springframework.data>
     </properties>
 
     <dependencyManagement>
