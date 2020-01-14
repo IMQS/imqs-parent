@@ -48,10 +48,10 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <jackson>2.9.9</jackson>
+        <jackson>2.9.10.1</jackson>
         <jaxb>2.2.11</jaxb>
         <slf4j>1.7.15</slf4j>
-        <log4j>1.2.15</log4j>
+        <log4j>2.13.0</log4j>
         <logback>1.2.3</logback>
         <lombok>1.18.4</lombok>
         <groovy>2.5.8</groovy>
@@ -215,8 +215,8 @@
             </dependency>
 
             <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
                 <version>${log4j}</version>
                 <exclusions>
                     <exclusion>
