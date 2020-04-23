@@ -48,7 +48,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <jackson>2.9.10.1</jackson>
+        <jackson>2.9.10.4</jackson>
         <jaxb>2.2.11</jaxb>
         <slf4j>1.7.15</slf4j>
         <log4j>2.13.0</log4j>
