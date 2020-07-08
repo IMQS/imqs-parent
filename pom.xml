@@ -37,6 +37,12 @@
 
         <!-- log file name for service - without the .log extension -->
         <jsw.logfilename>"C:/imqsvar/logs/${project.artifactId}"</jsw.logfilename>
+
+        <!-- service http port here -->
+        <jsw.port>
+            0000
+        </jsw.port>
+
         <!-- Default Assembly Descriptor -->
         <assemble.descriptor>src/main/assembly/src.xml</assemble.descriptor>
 
@@ -583,9 +589,34 @@
             </build>
         </profile>
 
+        <profile>
+            <id>containerize</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <fork>true</fork>
+                            <addResources>true</addResources>
+                            <mainClass>${jsw.main.class}</mainClass>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <!--
-            NOTE: These plug-ins have been retained in here but they will not be used with Spring Boot
-            Spring Boot is best deployed as a single jar file and invoked with java -jar ...
+            NOTE: These plug-ins have been retained in here for deployment of windows native services.
+            Spring Boot is best deployed as a single jar file and invoked with java -jar but we ned to still run
+            them as services in the interim
         -->
         <profile>
             <id>deploy-application</id>
@@ -602,6 +633,7 @@
                                     <mainClass>${jsw.main.class}</mainClass>
                                     <commandLineArguments>
                                         <commandLineArgument>${jsw.configuration}</commandLineArgument>
+                                        <commandLineArgument>--server.port=${jsw.port}</commandLineArgument>
                                     </commandLineArguments>
                                     <!-- If you override the jvmSettings, remember to override all of them -->
                                     <jvmSettings>
@@ -611,8 +643,10 @@
                                         <maxStackSize>128M</maxStackSize>
                                         <systemProperties>
                                             <systemProperty>log_name=${jsw.logfilename}</systemProperty>
-                                            <systemProperty>logback.configurationFile=${jsw.log.config}</systemProperty>
+                                            <systemProperty>logging.config=${jsw.log.config}</systemProperty>
                                             <systemProperty>file.encoding=UTF-8</systemProperty>
+                                            <systemProperty>Docker=false</systemProperty>
+                                            <systemProperty>spring.profiles.active=production</systemProperty>
                                         </systemProperties>
                                     </jvmSettings>
                                     <generatorConfigurations>
@@ -620,9 +654,6 @@
                                         <generatorConfiguration>
                                             <generator>jsw</generator>
                                             <includes>
-                                                <include>linux-x86-32</include>
-                                                <include>linux-x86-64</include>
-                                                <include>windows-x86-32</include>
                                                 <include>windows-x86-64</include>
                                             </includes>
                                             <configuration>
@@ -672,7 +703,7 @@
                                 <goals>
                                     <goal>generate-daemons</goal>
                                 </goals>
-                                <phase>post-integration-test</phase>
+                                <phase>package</phase>
                             </execution>
                         </executions>
                     </plugin>
@@ -786,8 +817,5 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
-
-
 </project>
