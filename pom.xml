@@ -538,19 +538,6 @@
             </plugin>
 
             <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <version>${project.version}</version>
-                            <svn-revision>${project.scm.tag}</svn-revision>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <useEditMode>true</useEditMode>
@@ -568,7 +555,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <!--version>2.7</version-->
             </plugin>
         </plugins>
     </build>
