@@ -60,7 +60,7 @@
         <log4j>2.13.0</log4j>
         <logback>1.2.3</logback>
         <lombok>1.18.4</lombok>
-        <groovy>2.5.8</groovy>
+        <groovy>3.0.7</groovy>
         <groovy-eclipse-batch>2.5.8-03</groovy-eclipse-batch>
         <groovy-eclipse-compiler>3.6.0-03</groovy-eclipse-compiler>
         <commons-lang>3.9</commons-lang>
