@@ -4,7 +4,7 @@
 
     <groupId>za.co.imqs</groupId>
     <artifactId>imqs-parent</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IMQS Parent Pom</name>
@@ -57,7 +57,7 @@
         <jackson>2.9.10.1</jackson>
         <jaxb>2.2.11</jaxb>
         <slf4j>1.7.15</slf4j>
-        <log4j>2.13.0</log4j>
+        <log4j>2.17.1</log4j>
         <logback>1.2.3</logback>
         <lombok>1.18.4</lombok>
         <groovy>2.5.8</groovy>
