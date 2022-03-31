@@ -77,7 +77,7 @@
 
         -->
         <spring-boot>2.1.5.RELEASE</spring-boot>
-        <springframework.core>5.1.7.RELEASE</springframework.core>
+        <springframework.core>5.3.18</springframework.core>
         <springframework.beans>${springframework.core}</springframework.beans>
         <springframework.security>${springframework.core}</springframework.security>
         <springframework.rabbit>2.1.6.RELEASE</springframework.rabbit>
