@@ -179,7 +179,11 @@
                 <artifactId>jackson-datatype-joda</artifactId>
                 <version>${jackson}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson}</version>
+            </dependency>
             <!-- Apache -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
