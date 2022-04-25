@@ -65,7 +65,7 @@
         <groovy-eclipse-compiler>3.6.0-03</groovy-eclipse-compiler>
         <commons-lang>3.9</commons-lang>
         <commons-collection>4.3</commons-collection>
-        <jetty>9.4.18.v20190429</jetty>
+        <jetty>11.0.1</jetty>
 
 
         <!--
